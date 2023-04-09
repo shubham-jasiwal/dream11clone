@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Contests for {{ match.name }}</h1>
+    <ul>
+        {% for contest in contests %}
+            <li><a href="{% url 'contest_detail' contest.id %}">{{ contest.name }}</a></li>
+        {% empty %}
+            <li>No contests available.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

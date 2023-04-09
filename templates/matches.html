@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .circle-image {
+      width: 20px;
+      height: 20px;
+      border-radius: 50px;
+      object-fit: cover;
+    }
+    .participant-logo {
+      display: inline-block;
+    }
+</style>
+<h1>Matches</h1>
+    <ul>
+        {% for match in matches %}
+            <li><a href="{% url 'match_contests' match.id %}">{{ match.name }}</a></li>
+            <div class="participant-logo">
+             <h3>{{match.participants.p1}}</h3>
+             <img src="{% static match.participants.p1_logo %}" class="circle-image">
+            </div>
+            <div class="participant-logo">
+                <h3>{{match.participants.p2}}</h3>
+                <img src="{% static match.participants.p2_logo %}" class="circle-image">
+            </div>
+        {% endfor %}
+    </ul>
+{% endblock %}

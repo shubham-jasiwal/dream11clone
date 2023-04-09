@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Create Team</h1>
+  <form method="post" action="{% url 'create_team' %}">
+    {% csrf_token %}
+    <input type="hidden" name="contest" value="{{ contest.id }}">
+    <label for="team_name">Team Name:</label>
+    <input type="text" id="team_name" name="team_name" required>
+    <br>
+    <label for="players">Select Players:</label>
+    <br>
+    <h2>WK</h2>
+    {% for player in players %}
+      {% if player.category == 'WK' %}
+        <input type="checkbox" id="{{ player.id }}" name="players" value="{{ player.id }}">
+        <label for="{{ player.id }}">{{ player.name }} ({{ player.points }}) - {{ player.get_player_type_display }}</label>
+        <br>
+      {% endif %}
+    {% endfor %}
+    <h2>BAT</h2>
+    {% for player in players %}
+      {% if player.category == 'BAT' %}
+        <input type="checkbox" id="{{ player.id }}" name="players" value="{{ player.id }}">
+        <label for="{{ player.id }}">{{ player.name }} ({{ player.points }}) - {{ player.get_player_type_display }}</label>
+        <br>
+      {% endif %}
+    {% endfor %}
+    <h2>AR</h2>
+    {% for player in players %}
+      {% if player.category == 'AR' %}
+        <input type="checkbox" id="{{ player.id }}" name="players" value="{{ player.id }}">
+        <label for="{{ player.id }}">{{ player.name }} ({{ player.points }}) - {{ player.get_player_type_display }}</label>
+        <br>
+      {% endif %}
+    {% endfor %}
+    <h2>BOWL</h2>
+    {% for player in players %}
+      {% if player.category == 'BOWL' %}
+        <input type="checkbox" id="{{ player.id }}" name="players" value="{{ player.id }}">
+        <label for="{{ player.id }}">{{ player.name }} ({{ player.points }}) - {{ player.get_player_type_display }}</label>
+        <br>
+      {% endif %}
+    {% endfor %}
+    <br>
+    <button type="submit">Create Team</button>
+  </form>
+{% endblock %}

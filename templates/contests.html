@@ -1,0 +1,16 @@
+<!-- contests.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Contests</h1>
+  {% if contests %}
+    <ul>
+      {% for contest in contests %}
+        <li><a href="{% url 'contest_detail' contest.id %}">{{ contest.name }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No contests available.</p>
+  {% endif %}
+{% endblock %}

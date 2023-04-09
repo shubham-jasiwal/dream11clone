@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}My App{% endblock %}</title>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'contest_list' %}">Contests</a></li>
+      <li><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
+      <li><a href="{% url 'account' %}">My Account</a></li>
+      <li><a href="{% url 'matches' %}">Matches</a></li>
+    </ul>
+  </nav>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+</html>
